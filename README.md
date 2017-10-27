@@ -1,5 +1,3 @@
-Test
-
 # Table of Contents
 - [Important](#important)
 - [Kinova-ROS](#kinova-ros)
