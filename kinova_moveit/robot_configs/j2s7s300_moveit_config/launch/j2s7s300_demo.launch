@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
   <param name="robot_type" value="j2s7s300" />
   <param name="/pick_place_demo/arm/solve_type" value="Manipulation2" />
