@@ -38,6 +38,7 @@
 #include <kinova_msgs/ZeroTorques.h>
 #include <kinova_msgs/RunCOMParametersEstimation.h>
 #include <kinova_msgs/CartesianForce.h>
+#include <kinova_msgs/Switch2CartControl.h>
 
 #include <time.h>
 #include <math.h>
@@ -75,6 +76,7 @@ class KinovaArm
     bool stopServiceCallback(kinova_msgs::Stop::Request &req, kinova_msgs::Stop::Response &res);
     bool startServiceCallback(kinova_msgs::Start::Request &req, kinova_msgs::Start::Response &res);
     bool homeArmServiceCallback(kinova_msgs::HomeArm::Request &req, kinova_msgs::HomeArm::Response &res);
+    bool Switch2CartControlServiceCallback(kinova_msgs::Switch2CartControl::Request &req, kinova_msgs::Switch2CartControl::Response &res);    
     bool ActivateNullSpaceModeCallback(kinova_msgs::SetNullSpaceModeState::Request &req,
                                        kinova_msgs::SetNullSpaceModeState::Response &res);
     bool addCartesianPoseToTrajectory(kinova_msgs::AddPoseToCartesianTrajectory::Request &req,
@@ -136,6 +138,7 @@ class KinovaArm
     ros::ServiceServer stop_service_;
     ros::ServiceServer start_service_;
     ros::ServiceServer homing_service_;
+    ros::ServiceServer switch_to_cart_control_service_;
     ros::ServiceServer start_null_space_service_;
     ros::ServiceServer add_trajectory_;
     ros::ServiceServer clear_trajectories_;

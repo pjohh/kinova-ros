@@ -169,6 +169,7 @@ KinovaArm::KinovaArm(KinovaComm &arm, const ros::NodeHandle &nodeHandle, const s
     stop_service_ = node_handle_.advertiseService("in/stop", &KinovaArm::stopServiceCallback, this);
     start_service_ = node_handle_.advertiseService("in/start", &KinovaArm::startServiceCallback, this);
     homing_service_ = node_handle_.advertiseService("in/home_arm", &KinovaArm::homeArmServiceCallback, this);
+    switch_to_cart_control_service_ = node_handle_.advertiseService("in/switch_to_cart_control", &KinovaArm::Switch2CartControlServiceCallback, this);
     add_trajectory_ = node_handle_.advertiseService("in/add_pose_to_Cartesian_trajectory",
                       &KinovaArm::addCartesianPoseToTrajectory, this);
     clear_trajectories_ = node_handle_.advertiseService("in/clear_trajectories",
@@ -245,6 +246,14 @@ bool KinovaArm::homeArmServiceCallback(kinova_msgs::HomeArm::Request &req, kinov
     kinova_comm_.homeArm();
     kinova_comm_.initFingers();
     res.homearm_result = "KINOVA ARM HAS BEEN RETURNED HOME";
+    return true;
+}
+
+bool KinovaArm::Switch2CartControlServiceCallback(kinova_msgs::Switch2CartControl::Request &req, kinova_msgs::Switch2CartControl::Response &res)
+{
+    kinova_comm_.Switch2CartControl();
+    kinova_comm_.initFingers();
+    res.switch_to_cart_control = "KINOVA ARM IS IN CARTESIAN SPACE NOW";
     return true;
 }
 

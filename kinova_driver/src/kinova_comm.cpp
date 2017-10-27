@@ -1461,6 +1461,24 @@ void KinovaComm::homeArm(void)
  * @return true is robot is already in predefined "Home"configuration.
  * @warning The home position is the default home, rather than user defined home.
  */
+
+void KinovaComm::Switch2CartControl(void)
+{
+    boost::recursive_mutex::scoped_lock lock(api_mutex_);
+
+    if (isStopped())
+    {
+        ROS_INFO("Arm is stopped, cannot switch to cartesian space");
+        return;
+    }
+
+    stopAPI();
+    ros::Duration(1.0).sleep();
+    startAPI();
+
+    kinova_api_.setCartesianControl();
+}
+
 bool KinovaComm::isHomed(void)
 {
     QuickStatus quick_status;

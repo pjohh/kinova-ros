@@ -84,6 +84,7 @@ class KinovaComm
     void getForcesInfo(ForcesInfo &force_Info); // joint torque and end-effector wrench
     void getGripperStatus(Gripper &gripper_status); // most complete information of each fingers, including model, motion, force, limits, etc.
     void homeArm(void);
+    void Switch2CartControl(void);
     bool isHomed(void);
     void initFingers(void);
     void setEndEffectorOffset(unsigned int status, float x, float y, float z);
