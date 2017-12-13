@@ -286,8 +286,8 @@ int main(int argc, char** argv)
     {
         robot_name = argv[argc-1];
     }
-    ros::AsyncSpinner spinner(1);
-    spinner.start();
+    //ros::AsyncSpinner spinner(4);
+    //spinner.start();
 
     kinova::JointTrajectoryActionController jtac(node, robot_name);
 
